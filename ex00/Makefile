@@ -32,7 +32,7 @@ CFLAGS += -Wno-unused-variable -Wno-unused-parameter
 endif
 
 # Targets
-.PHONY: all mandatory bonus clean fclean re directories debug rebug fsan resan message
+.PHONY: all mandatory bonus clean fclean re directories debug rebug fsan resan message CPP98 NOUNUSED
 
 all: directories $(NAME)
 
