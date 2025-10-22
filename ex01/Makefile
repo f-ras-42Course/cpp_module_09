@@ -7,7 +7,7 @@ OBJ_DIR = obj
 INCL_DIR = include
 SOURCES = $(shell find $(SRC_DIR) -type f -name "*.cpp")
 OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SOURCES:%.cpp=%.o))
-HEADERS = $(shell find $(INCL_DIR) -type f -name "*.h")
+HEADERS = $(shell find $(INCL_DIR) -type f -name "*.hpp")
 RM = rm -f
 
 ifdef DEBUG
@@ -40,11 +40,11 @@ endif
 
 all: directories $(NAME)
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $(OBJECTS)
 	@$(MAKE) message EXECUTABLE=$@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $^
 
 # Directories
